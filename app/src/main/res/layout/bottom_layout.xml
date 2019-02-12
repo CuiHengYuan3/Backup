@@ -5,7 +5,8 @@
     android:layout_height="52dp">
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="50dp"
+    android:baselineAligned="false">
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -18,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="8"
-android:src="@drawable/shangyinDefault"
+android:src="@drawable/shangyindefault"
            android:id="@+id/I正在上映"
             />
         <TextView
@@ -41,15 +42,15 @@ android:gravity="center"
         >
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="8"
 android:id="@+id/I查找影片"
-            android:src="@drawable/searchDefault"
+            android:src="@drawable/searchdefault"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="查找影片"
+            android:text="@string/searchmovie"
             android:id="@+id/T查找影片"
 android:textColor="@color/black"
             android:layout_gravity="center"
@@ -65,9 +66,9 @@ android:textColor="@color/black"
         >
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="8"
-android:src="@drawable/topDefault"
+android:src="@drawable/topdefault"
             android:id="@+id/ITop250"
             android:layout_gravity="center"
 
@@ -76,7 +77,7 @@ android:src="@drawable/topDefault"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/TTop250"
-            android:text="Top250"
+            android:text="@string/top250"
            android:layout_gravity="center"
           android:textColor="@color/black"
             />

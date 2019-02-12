@@ -14,26 +14,35 @@
         <!--android:theme="@style/AppTheme.AppBarOverlay">-->
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolar"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
            android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             />
-<fragment
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:id="@+id/正在上映"
+    android:text="@string/onshow"
+    android:gravity="center"
+    android:textSize="30sp"
+android:textColor="@color/red"
+android:background="@color/redLess"
+    />
+<View
+    android:layout_width="match_parent"
+    android:layout_height="3dp"
+   android:background="@color/lightGreen"
+    ></View>
+    <fragment
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="1">
+    android:layout_weight="1"
+        >
 
 </fragment>
     <include layout="@layout/bottom_layout" />
 
-    <!--<android.support.design.widget.FloatingActionButton-->
-        <!--android:id="@+id/fab"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="bottom|end"-->
-        <!--android:layout_margin="@dimen/fab_margin"-->
-        <!--app:srcCompat="@android:drawable/ic_dialog_email" />-->
 
 </android.support.v7.widget.LinearLayoutCompat>
