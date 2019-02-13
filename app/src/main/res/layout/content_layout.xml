@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Activity.MainActivity"
     android:orientation="vertical"
     >
 
@@ -35,13 +35,13 @@ android:background="@color/redLess"
     android:layout_height="3dp"
    android:background="@color/lightGreen"
     ></View>
-    <fragment
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-        >
+    <!--<fragment-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1"-->
+        <!--&gt;-->
 
-</fragment>
+<!--</fragment>-->
     <include layout="@layout/bottom_layout" />
 
 
