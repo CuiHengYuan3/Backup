@@ -1,5 +1,6 @@
 package com.example.lenovo.myapplication.util.gson;
 
-public class Genres {
+public class Casts {
+public String name;
 
 }

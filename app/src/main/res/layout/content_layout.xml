@@ -20,29 +20,32 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             />
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:id="@+id/正在上映"
-    android:text="@string/onshow"
-    android:gravity="center"
-    android:textSize="30sp"
-android:textColor="@color/red"
-android:background="@color/redLess"
-    />
-<View
-    android:layout_width="match_parent"
-    android:layout_height="3dp"
-   android:background="@color/lightGreen"
-    ></View>
-    <!--<fragment-->
+<!--<TextView-->
     <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="0dp"-->
-    <!--android:layout_weight="1"-->
-        <!--&gt;-->
+    <!--android:layout_height="40dp"-->
+    <!--android:id="@+id/正在上映"-->
+    <!--android:text="@string/onshow"-->
+    <!--android:gravity="center"-->
+    <!--android:textSize="30sp"-->
+<!--android:textColor="@color/red"-->
+<!--android:background="@color/redLess"-->
+    <!--/>-->
+<!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="3dp"-->
+   <!--android:background="@color/lightGreen"-->
+    <!--&gt;</View>-->
+    <fragment
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+        android:name="com.example.lenovo.myapplication.Fragment.firstFragment"
+        android:id="@+id/first_fragment"
 
-<!--</fragment>-->
-    <include layout="@layout/bottom_layout" />
+        >
+</fragment>
+    <include layout="@layout/bottom_layout"
+        />
 
 
 </android.support.v7.widget.LinearLayoutCompat>
