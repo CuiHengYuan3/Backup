@@ -7,9 +7,11 @@
     >
 <TextView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="asdf\sadfsdfsfsadfasdfsadfsdf"
-    />
+    android:layout_height="50dp"
+    android:textSize="50dp"
+    android:text="asdfadfadsfdfs"/>
+    <Button android:layout_height="50dp"
+        android:layout_width="50dp" />
     <android.support.v7.widget.RecyclerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"

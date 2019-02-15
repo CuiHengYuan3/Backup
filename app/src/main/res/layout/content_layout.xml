@@ -35,15 +35,27 @@
     <!--android:layout_height="3dp"-->
    <!--android:background="@color/lightGreen"-->
     <!--&gt;</View>-->
-    <fragment
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-        android:name="com.example.lenovo.myapplication.Fragment.firstFragment"
-        android:id="@+id/first_fragment"
+ <!--<LinearLayout-->
+     <!--android:layout_width="match_parent"-->
+     <!--android:layout_height="match_parent"-->
+     <!--android:id="@+id/test"-->
+     <!--android:orientation="horizontal">-->
 
-        >
-</fragment>
+ <!--</LinearLayout>-->
+    <!--<fragment-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1"-->
+        <!--android:name="com.example.lenovo.myapplication.Fragment.firstFragment"-->
+        <!--android:id="@+id/the_fragment"-->
+        <!--&gt;-->
+<!--</fragment>-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/beReplaced"
+        ></FrameLayout>
     <include layout="@layout/bottom_layout"
         />
 
