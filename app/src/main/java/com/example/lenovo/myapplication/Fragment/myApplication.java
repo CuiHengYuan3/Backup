@@ -1,10 +1,10 @@
-package com.example.lenovo.myapplication.util;
+package com.example.lenovo.myapplication.Fragment;
 
 import android.app.Application;
 import android.content.Context;
 
 public class myApplication extends Application {
-private  static Context context;
+public   static Context context;
     @Override
     public void onCreate() {
 

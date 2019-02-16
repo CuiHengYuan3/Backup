@@ -9,19 +9,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.lenovo.myapplication.Fragment.firstFragment;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.myapplication.util.gson.Casts;
 import com.example.lenovo.myapplication.util.gson.Directors;
 import com.example.lenovo.myapplication.util.gson.Subjects;
-import com.example.lenovo.myapplication.util.myApplication;
+import com.example.lenovo.myapplication.Fragment.myApplication;
 
 import java.util.List;
 
 public class RecyclerView_adapter extends RecyclerView.Adapter<RecyclerView_adapter.ViewHolder> {
-
+    private static final String TAG = "RecyclerView_adapter";
     private List<Subjects> mSubjects;
-
     public RecyclerView_adapter(List<Subjects> mSubjects) {
         this.mSubjects = mSubjects;
     }
@@ -41,12 +39,12 @@ public class RecyclerView_adapter extends RecyclerView.Adapter<RecyclerView_adap
         viewHolder.movieName.setText(subjects.title);
         for (Directors directors : subjects.directors) {
             String oldText = (String) viewHolder.director.getText();
-            viewHolder.director.setText(oldText + directors.getName() + "/");
+            viewHolder.director.setText( directors.getName() );//
         }
         viewHolder.director.setText(viewHolder.director.getText().subSequence(0, viewHolder.director.length() - 1));
         for (Casts casts : subjects.casts) {
             String oldText = (String) viewHolder.actors.getText();
-            viewHolder.actors.setText(oldText + casts.getName() + "/");
+            viewHolder.actors.setText(casts.getName() );
         }
         viewHolder.actors.setText(viewHolder.actors.getText().subSequence(0, viewHolder.actors.length() - 1));
         int pinFen = subjects.rating.getAverage();
@@ -114,7 +112,7 @@ viewHolder.star5.setImageResource(R.drawable.start1);
             super(itemView);
             moviePic = itemView.findViewById(R.id.iv_img);
             movieName = itemView.findViewById(R.id.tv_title);
-            score = itemView.findViewById(R.id.tv_title);
+            score = itemView.findViewById(R.id.score);
             actors = itemView.findViewById(R.id.tv_yanyuang);
             director = itemView.findViewById(R.id.direct);
             star1 = itemView.findViewById(R.id.iv_start1);

@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity
     private static final String firstTAG = "firstTAG";
     private static final String secondTAG = "secondTAG";
     private static final String thirdTAG = "thirdTAG";
-
+    private static final String  myTextTAG = "data";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,9 +56,14 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView =  findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         //////////////////////////////////////////////////////////
+        Log.d("data", "onCreate:1 ");
         initView();
-currentTAG=firstTAG;
-    changeOrInitFragment(new firstFragment());
+        Log.d("data", "onCreate:2 ");
+        currentTAG=firstTAG;
+        Log.d("data", "onCreate:3 ");
+        changeOrInitFragment(new firstFragment());
+        Log.d("data", "onCreate:4 ");
+
     }
 
     public void initView() {
