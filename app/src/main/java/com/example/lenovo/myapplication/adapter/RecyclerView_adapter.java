@@ -1,7 +1,9 @@
 package com.example.lenovo.myapplication.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +18,18 @@ import com.example.lenovo.myapplication.util.gson.Directors;
 import com.example.lenovo.myapplication.util.gson.Subjects;
 import com.example.lenovo.myapplication.util.myApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerView_adapter extends RecyclerView.Adapter<RecyclerView_adapter.ViewHolder> {
+    private static final String TAG = "RecyclerView_adapter";
+    public Context context;
+    private ArrayList<Subjects> mSubjects;
 
-    private List<Subjects> mSubjects;
-
-    public RecyclerView_adapter(List<Subjects> mSubjects) {
+    public RecyclerView_adapter(Context context, ArrayList<Subjects> mSubjects) {
+        this.context = context;
         this.mSubjects = mSubjects;
+        Log.d(TAG, "RecyclerView_adapter: 构造");
     }
 
     @NonNull
@@ -31,7 +37,9 @@ public class RecyclerView_adapter extends RecyclerView.Adapter<RecyclerView_adap
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recview_item_layout, viewGroup, false);
         ViewHolder holder = new ViewHolder(view);
+        Log.d(TAG, "onCreateViewHolder: ");
         return holder;
+    
     }
 
     @Override
@@ -49,10 +57,9 @@ public class RecyclerView_adapter extends RecyclerView.Adapter<RecyclerView_adap
             viewHolder.actors.setText(oldText + casts.getName() + "/");
         }
         viewHolder.actors.setText(viewHolder.actors.getText().subSequence(0, viewHolder.actors.length() - 1));
-        int pinFen = subjects.rating.getAverage();
-        viewHolder.score.setText(pinFen);
+        double pinFen = subjects.rating.getAverage();
+        viewHolder.score.setText("pinFen");
         String scroe = subjects.rating.getStars();
-        //星星算法
         double a = (double) (Integer.parseInt(scroe)) / 10;
         a--;
         viewHolder.star1.setImageResource(R.drawable.start1);
@@ -87,12 +94,15 @@ viewHolder.star5.setImageResource(R.drawable.start1);
             viewHolder.star4.setImageResource(R.drawable.start1);
         }
 
-
+        Log.d(TAG, "onBindViewHolder: ");
 
     }
+
     @Override
     public int getItemCount() {
+        Log.d(TAG, "getItemCount: start");
         return  mSubjects.size();
+
     }
 
 
@@ -114,7 +124,7 @@ viewHolder.star5.setImageResource(R.drawable.start1);
             super(itemView);
             moviePic = itemView.findViewById(R.id.iv_img);
             movieName = itemView.findViewById(R.id.tv_title);
-            score = itemView.findViewById(R.id.tv_title);
+            score = itemView.findViewById(R.id.score);
             actors = itemView.findViewById(R.id.tv_yanyuang);
             director = itemView.findViewById(R.id.direct);
             star1 = itemView.findViewById(R.id.iv_start1);
@@ -122,6 +132,7 @@ viewHolder.star5.setImageResource(R.drawable.start1);
             star3 = itemView.findViewById(R.id.iv_start3);
             star4 = itemView.findViewById(R.id.iv_start4);
             star5 = itemView.findViewById(R.id.iv_start5);
+            Log.d(TAG, "ViewHolder: ");
         }
     }
 }

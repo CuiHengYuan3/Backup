@@ -1,7 +1,7 @@
 package com.example.lenovo.myapplication.util.gson;
 
 public class Rating {
-  public int getAverage() {
+  public double getAverage() {
     return average;
   }
 
@@ -9,6 +9,6 @@ public class Rating {
     return stars;
   }
 
-  public int  average;
+  public double average;
 public String    stars;
 }

@@ -27,6 +27,7 @@ import com.example.lenovo.myapplication.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+    private static final String TAG = "MainActivity";
     private LinearLayout linearLayout_first;
     private LinearLayout linearLayout_second;
     private LinearLayout linearLayout_third;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity
         initView();
 currentTAG=firstTAG;
     changeOrInitFragment(new firstFragment());
+        Log.i(TAG, "onCreate:ok ");
     }
 
     public void initView() {
@@ -106,7 +108,6 @@ textView_first.setTextColor(getResources().getColor(R.color.black));
     imageView_third.setImageResource(R.drawable.topdefault);
     textView_third.setTextColor(getResources().getColor(R.color.black));
 
-
     }
 
     public void ChangeFragentByTAG(String TAG) {
@@ -141,7 +142,7 @@ textView_first.setTextColor(getResources().getColor(R.color.black));
     }
 
     private void changeOrInitFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.beReplaced, fragment);
         fragmentTransaction.commit();
