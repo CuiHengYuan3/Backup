@@ -38,11 +38,15 @@ public class MainActivity extends AppCompatActivity
     private TextView textView_second;
     private TextView textView_third;
     private FragmentManager fragmentManager;
-    private static String currentTAG = null;
+  public   Fragment firstFragment;
+    public   Fragment secondFragment;
+    public   Fragment thirdFragment;
+   public  Fragment currentFragment;
+    private static String currentTAG = "";
     private static final String firstTAG = "firstTAG";
     private static final String secondTAG = "secondTAG";
     private static final String thirdTAG = "thirdTAG";
-
+    private static final String  myTextTAG = "data";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,10 +61,20 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView =  findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         //////////////////////////////////////////////////////////
+        Log.d("data", "onCreate:1 ");
         initView();
+
 currentTAG=firstTAG;
     changeOrInitFragment(new firstFragment());
         Log.i(TAG, "onCreate:ok ");
+
+        Log.d("data", "onCreate:2 ");
+        currentTAG=firstTAG;
+        Log.d("data", "onCreate:3 ");
+        changeOrInitFragment(new firstFragment());
+        Log.d("data", "onCreate:4 ");
+
+
     }
 
     public void initView() {
@@ -76,8 +90,9 @@ currentTAG=firstTAG;
  linearLayout_first.setOnClickListener(this);
     linearLayout_second.setOnClickListener(this);
     linearLayout_third.setOnClickListener(this);
-imageView_first.setImageResource(R.drawable.shangyinselected);
-    textView_first.setTextColor(getResources().getColor(R.color.red));//???????????
+//imageView_first.setImageResource(R.drawable.shangyinselected);
+//    textView_first.setTextColor(getResources().getColor(R.color.red));//???????????
+ fragmentManager=getSupportFragmentManager();
     }
 
     @Override
@@ -109,44 +124,46 @@ textView_first.setTextColor(getResources().getColor(R.color.black));
     textView_third.setTextColor(getResources().getColor(R.color.black));
 
     }
-
-    public void ChangeFragentByTAG(String TAG) {
-
-         if (TAG == currentTAG) {
-            //什么也不做
-        } else if (TAG == firstTAG) {
-            currentTAG=firstTAG;
-           setDefault();
-             imageView_first.setImageResource(R.drawable.shangyinselected);
-             textView_first.setTextColor(getResources().getColor(R.color.red));
-           Fragment fragment = new firstFragment();
-             changeOrInitFragment(fragment);
-        } else if (TAG == secondTAG) {
-            currentTAG=secondTAG;
-             setDefault();
-             imageView_second.setImageResource(R.drawable.searchselected);
-             textView_second.setTextColor(getResources().getColor(R.color.red));
-
-             Fragment fragment = new secondFragment();
-             changeOrInitFragment(fragment);
-        } else if (TAG == thirdTAG) {
-           currentTAG=thirdTAG;
-             setDefault();
-             imageView_third.setImageResource(R.drawable.topselected);
-             textView_third.setTextColor(getResources().getColor(R.color.red));
-
-             Fragment fragment = new thirdFragment();
-            changeOrInitFragment(fragment);
-
-         }
+    private void toFirstFragment(){
+if (!currentTAG.equals())
     }
-
-    private void changeOrInitFragment(Fragment fragment) {
-         fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.beReplaced, fragment);
-        fragmentTransaction.commit();
-    }
+//    public void ChangeFragentByTAG(String TAG) {
+//
+//         if (TAG == currentTAG) {
+//            //什么也不做
+//        } else if (TAG == firstTAG) {
+//            currentTAG=firstTAG;
+//           setDefault();
+//             imageView_first.setImageResource(R.drawable.shangyinselected);
+//             textView_first.setTextColor(getResources().getColor(R.color.red));
+//           Fragment fragment = new firstFragment();
+//             changeOrInitFragment(fragment);
+//        } else if (TAG == secondTAG) {
+//            currentTAG=secondTAG;
+//             setDefault();
+//             imageView_second.setImageResource(R.drawable.searchselected);
+//             textView_second.setTextColor(getResources().getColor(R.color.red));
+//
+//             Fragment fragment = new secondFragment();
+//             changeOrInitFragment(fragment);
+//        } else if (TAG == thirdTAG) {
+//           currentTAG=thirdTAG;
+//             setDefault();
+//             imageView_third.setImageResource(R.drawable.topselected);
+//             textView_third.setTextColor(getResources().getColor(R.color.red));
+//
+//             Fragment fragment = new thirdFragment();
+//            changeOrInitFragment(fragment);
+//
+//         }
+//    }
+//
+//    private void changeOrInitFragment(Fragment fragment) {
+//         fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.beReplaced, fragment);
+//        fragmentTransaction.commit();
+//    }
 
 
     //    currentTAG=firstTAG;

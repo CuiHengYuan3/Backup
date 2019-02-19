@@ -11,38 +11,30 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.myapplication.adapter.RecyclerView_adapter;
 import com.example.lenovo.myapplication.util.gson.Subjects;
 import com.example.lenovo.myapplication.util.http.OKHttp;
 import com.example.lenovo.myapplication.util.http.handleResponse;
-import com.example.lenovo.myapplication.util.myApplication;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
-
-import static com.example.lenovo.myapplication.util.http.handleResponse.handleSubjectsResponse;
 
 public class firstFragment extends Fragment {
     private static final String TAG = "firstFragment";
-    public ArrayList<Subjects> subjectsList = new ArrayList<>();
-    public String responsetext = "";
-
-    @Override
+    private ArrayList<Subjects> subjectsList;
+     private   ProgressBar progressBar;
+   private TextView textView;
+     private   RecyclerView_adapter recyclerViewAdapter;
+   private     RecyclerView  recyclerView;
+     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         Log.d(TAG, "onAttach: ");
@@ -58,39 +50,44 @@ public class firstFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.firstfragment_layout, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.Rec);
+       progressBar=view.findViewById(R.id.progress_Bar);
+     textView=view.findViewById(R.id.progress);
+      progressBar.setVisibility(View.VISIBLE);
+      textView.setVisibility(View.VISIBLE);
+      subjectsList = new ArrayList<>();
+        Log.d(TAG, String.valueOf(subjectsList.size()));
+      recyclerView = view.findViewById(R.id.Rec);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
-new Thread(new Runnable() {
+
+        OKHttp.sendOKHttpcRequest("https://api.douban.com/v2/movie/in_theaters?city=重庆&start=0&count=20", new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                 String responsText = response.body().string();
+                subjectsList = handleResponse.handleSubjectsResponse(responsText);
+getActivity().runOnUiThread(new Runnable() {
     @Override
     public void run() {
-        try {
-        OkHttpClient client=new OkHttpClient();
-        Request request=new Request.Builder().url("https://api.douban.com/v2/movie/in_theaters?city=重庆&start=0&count=20").build();
-            Response response=client.newCall(request).execute();
-        responsetext=response.body().string();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            Gson gson=new Gson();
-            JSONObject jsonObject=new JSONObject(responsetext);
-            JSONArray jsonArray=jsonObject.getJSONArray("subjects");
-            for (int i = 0; i <jsonArray.length() ; i++) {
-                String eachContent=jsonArray.getJSONObject(i).toString();
-                Subjects subjects=gson.fromJson(eachContent, new TypeToken<Subjects>() {}.getType());
-                subjectsList.add(subjects);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-    }
-}).start();
-
-        RecyclerView_adapter recyclerViewAdapter = new RecyclerView_adapter(getActivity(), subjectsList);
+         recyclerViewAdapter = new RecyclerView_adapter(getActivity(), subjectsList);
         recyclerView.setAdapter(recyclerViewAdapter);
+progressBar.setVisibility(View.GONE);
+ textView.setVisibility(View.GONE);
+        //        recyclerViewAdapter.notifyDataSetChanged();
+}
+});
+                Log.d(TAG, String.valueOf(subjectsList.size()));
+
+            }
+        });
+
+
+
+        Log.d(TAG, "onCreateView: notifyDataSetChanged");
         Log.d(TAG, "onCreateView: ok");
         return view;
     }
