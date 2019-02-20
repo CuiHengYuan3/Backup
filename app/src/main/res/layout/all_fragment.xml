@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v7.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+<fragment
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+android:id="@+id/first_fragment"
+android:name="com.example.lenovo.myapplication.Fragment.firstFragment"
+/>
+    <fragment
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/second_fragment"
+        android:name="com.example.lenovo.myapplication.Fragment.thirdFragment"
+        />
+    <fragment
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/third_fragment"
+        android:name="com.example.lenovo.myapplication.Fragment.thirdFragment"
+        />
 
-</android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.LinearLayoutCompat>

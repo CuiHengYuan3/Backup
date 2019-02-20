@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class handleResponse {
-    public static List<Subjects> handleSubjectsResponse(String response) {
+    public static ArrayList<Subjects> handleSubjectsResponse(String response) {
         ArrayList<Subjects> subjectsList=new ArrayList<>();
 
         JsonObject jsonObject1=new JsonParser().parse(response).getAsJsonObject();
@@ -24,11 +24,9 @@ public class handleResponse {
         JsonArray jsonArray=jsonObject1.getAsJsonArray("subjects");
         Gson gson=new Gson();
         for (JsonElement user:jsonArray) {
-
               Subjects subjects = gson.fromJson(user, new TypeToken<Subjects>() {}.getType());
               subjectsList.add(subjects);
           }
-
         return subjectsList;
     }
 }

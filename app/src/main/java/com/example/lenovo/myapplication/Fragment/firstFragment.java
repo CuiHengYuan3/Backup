@@ -1,10 +1,12 @@
 package com.example.lenovo.myapplication.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,7 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.lenovo.myapplication.Activity.detailActivity;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.myapplication.adapter.RecyclerView_adapter;
 import com.example.lenovo.myapplication.util.gson.Subjects;
@@ -30,11 +34,13 @@ import okhttp3.Response;
 public class firstFragment extends Fragment {
     private static final String TAG = "firstFragment";
     private ArrayList<Subjects> subjectsList;
-     private   ProgressBar progressBar;
-   private TextView textView;
-     private   RecyclerView_adapter recyclerViewAdapter;
-   private     RecyclerView  recyclerView;
-     @Override
+    private ProgressBar progressBar;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private TextView textView;
+    private RecyclerView_adapter recyclerViewAdapter;
+    private RecyclerView recyclerView;
+
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         Log.d(TAG, "onAttach: ");
@@ -50,13 +56,40 @@ public class firstFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.firstfragment_layout, container, false);
-       progressBar=view.findViewById(R.id.progress_Bar);
-     textView=view.findViewById(R.id.progress);
-      progressBar.setVisibility(View.VISIBLE);
-      textView.setVisibility(View.VISIBLE);
-      subjectsList = new ArrayList<>();
+        swipeRefreshLayout = view.findViewById(R.id.refresh);
+        swipeRefreshLayout.setColorSchemeResources(R.color.lightGreen);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                                                    @Override
+                                                    public void onRefresh() {
+                                                        OKHttp.sendOKHttpcRequest("https://api.douban.com/v2/movie/in_theaters?city=重庆&start=0&count=20", new Callback() {
+                                                            @Override
+                                                            public void onFailure(Call call, IOException e) {
+                                                                e.printStackTrace();
+                                                            }
+
+                                                            @Override
+                                                            public void onResponse(Call call, Response response) throws IOException {
+                                                                String responsText = response.body().string();
+                                                                subjectsList = handleResponse.handleSubjectsResponse(responsText);
+                                                                getActivity().runOnUiThread(new Runnable() {
+                                                                    @Override
+                                                                    public void run() {
+                                                                        recyclerViewAdapter.notifyDataSetChanged();
+                                                                        Toast.makeText(myApplication.getContext(),"刷新成功",Toast.LENGTH_SHORT).show();
+                                                                    swipeRefreshLayout.setRefreshing(false);
+                                                                    }
+                                                                });
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                progressBar = view.findViewById(R.id.progress_Bar);
+        textView = view.findViewById(R.id.progress);
+        progressBar.setVisibility(View.VISIBLE);
+        textView.setVisibility(View.VISIBLE);
+        subjectsList = new ArrayList<>();
         Log.d(TAG, String.valueOf(subjectsList.size()));
-      recyclerView = view.findViewById(R.id.Rec);
+        recyclerView = view.findViewById(R.id.Rec);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -68,23 +101,42 @@ public class firstFragment extends Fragment {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                 String responsText = response.body().string();
+                String responsText = response.body().string();
                 subjectsList = handleResponse.handleSubjectsResponse(responsText);
-getActivity().runOnUiThread(new Runnable() {
-    @Override
-    public void run() {
-         recyclerViewAdapter = new RecyclerView_adapter(getActivity(), subjectsList);
-        recyclerView.setAdapter(recyclerViewAdapter);
-progressBar.setVisibility(View.GONE);
- textView.setVisibility(View.GONE);
-        //        recyclerViewAdapter.notifyDataSetChanged();
-}
-});
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        recyclerViewAdapter = new RecyclerView_adapter(getActivity(), subjectsList);
+                        recyclerView.setAdapter(recyclerViewAdapter);
+                        progressBar.setVisibility(View.GONE);
+                        textView.setVisibility(View.GONE);
+                        recyclerViewAdapter.setOnItemClickListener(new RecyclerView_adapter.OnItemClickListener() {
+                            @Override
+                            public void onClick(int position) {
+                                Subjects subjects = subjectsList.get(position);
+                                String movieId = subjects.getId();
+                                String tiltle=subjects.getTitle();
+                                String imgUrl=subjects.images.getSmall();
+                                Intent intent = new Intent(getActivity(), detailActivity.class);
+                                intent.putExtra("movieID", movieId);
+                                intent.putExtra("tiltle",tiltle);
+                                intent.putExtra("url",imgUrl);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onLongClick(int position) {
+
+                            }
+                        });
+
+                        //        recyclerViewAdapter.notifyDataSetChanged();
+                    }
+                });
                 Log.d(TAG, String.valueOf(subjectsList.size()));
 
             }
         });
-
 
 
         Log.d(TAG, "onCreateView: notifyDataSetChanged");

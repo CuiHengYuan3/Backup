@@ -18,18 +18,18 @@ import com.example.lenovo.myapplication.util.gson.Subjects;
 import com.example.lenovo.myapplication.Fragment.myApplication;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecyclerView_adapter extends RecyclerView.Adapter<RecyclerView_adapter.ViewHolder> {
     private static final String TAG = "RecyclerView_adapter";
-
+private   OnItemClickListener mOnItemClickListener ;
     private ArrayList<Subjects> mSubjects;
 
     public RecyclerView_adapter(Context context, ArrayList<Subjects> mSubjects) {
         this.mSubjects = mSubjects;
     }
-    public class ViewHolder extends RecyclerView.ViewHolder {
 
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        View  outView;//最外层view
         ImageView moviePic;
         TextView movieName;
         ImageView star1;
@@ -40,7 +40,7 @@ public class RecyclerView_adapter extends RecyclerView.Adapter<RecyclerView_adap
         TextView score;
         TextView actors;
         TextView director;
-View view;
+        View view;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,36 +54,55 @@ View view;
             star3 = itemView.findViewById(R.id.iv_start3);
             star4 = itemView.findViewById(R.id.iv_start4);
             star5 = itemView.findViewById(R.id.iv_start5);
-          view=itemView.findViewById(R.id.line);
+            view = itemView.findViewById(R.id.line);
+            outView=itemView;
             Log.d(TAG, "ViewHolder: ");
         }
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recview_item_layout, viewGroup, false);
-        ViewHolder holder = new ViewHolder(view);
+         ViewHolder holder = new ViewHolder(view);
+
         Log.d(TAG, "onCreateViewHolder: ");
         return holder;
-    
+
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder,final int i) {//??????????final?
+        if( mOnItemClickListener!= null){
+            viewHolder.outView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickListener.onClick(i);
+                }
+            });
+viewHolder.outView.setOnLongClickListener(new View.OnLongClickListener() {
+    @Override
+    public boolean onLongClick(View v) {
+        mOnItemClickListener.onLongClick(i);
+        return false;
+    }
+});
+        }
+
         Subjects subjects = mSubjects.get(i);
         Glide.with(myApplication.getContext()).load(subjects.images.getSmall()).into(viewHolder.moviePic);
-        viewHolder.movieName.setText( subjects.title);
+        viewHolder.movieName.setText(subjects.title);
         for (Directors directors : subjects.directors) {
 
-            viewHolder.director.setText(viewHolder.director.getText()+ directors.getName()+"/" );
+            viewHolder.director.setText(viewHolder.director.getText() + directors.getName() + "/");
         }
         viewHolder.director.setText(viewHolder.director.getText().subSequence(0, viewHolder.director.length() - 1));
         for (Casts casts : subjects.casts) {
 
-            viewHolder.actors.setText( viewHolder.actors.getText()+ casts.getName() +"/");
+            viewHolder.actors.setText(viewHolder.actors.getText() + casts.getName() + "/");
         }
         viewHolder.actors.setText(viewHolder.actors.getText().subSequence(0, viewHolder.actors.length() - 1));
-        String pinFen = String.valueOf(subjects.rating.getAverage()) ;
+        String pinFen = String.valueOf(subjects.rating.getAverage());
         viewHolder.score.setText(pinFen);
         String scroe = subjects.rating.getStars();
         double a = (double) (Integer.parseInt(scroe)) / 10;
@@ -93,30 +112,30 @@ View view;
         a--;
         if (a >= 1.0) {
             viewHolder.star2.setImageResource(R.drawable.start1);
-        }else if (a==0.5){
+        } else if (a == 0.5) {
             viewHolder.star2.setImageResource(R.drawable.start1);
             viewHolder.star3.setImageResource(R.drawable.start_half);
-        }else if (a==0){
+        } else if (a == 0) {
             viewHolder.star2.setImageResource(R.drawable.start1);
         }
 
         a--;
         if (a >= 1.0) {
             viewHolder.star3.setImageResource(R.drawable.start1);
-        }else if (a==0.5){
+        } else if (a == 0.5) {
             viewHolder.star3.setImageResource(R.drawable.start1);
- viewHolder.star4.setImageResource(R.drawable.start_half);
-        }else if (a==0){
+            viewHolder.star4.setImageResource(R.drawable.start_half);
+        } else if (a == 0) {
             viewHolder.star3.setImageResource(R.drawable.start1);
         }
-    a--;
+        a--;
         if (a >= 1.0) {
             viewHolder.star4.setImageResource(R.drawable.start1);
-viewHolder.star5.setImageResource(R.drawable.start1);
-        }else if (a==0.5){
+            viewHolder.star5.setImageResource(R.drawable.start1);
+        } else if (a == 0.5) {
             viewHolder.star4.setImageResource(R.drawable.start1);
             viewHolder.star5.setImageResource(R.drawable.start_half);
-        }else if (a==0){
+        } else if (a == 0) {
             viewHolder.star4.setImageResource(R.drawable.start1);
         }
 
@@ -127,10 +146,15 @@ viewHolder.star5.setImageResource(R.drawable.start1);
     @Override
     public int getItemCount() {
         Log.d(TAG, "getItemCount: start");
-        return  mSubjects.size();
+        return mSubjects.size();
 
     }
-
-
+    public interface OnItemClickListener{
+        void onClick( int position);
+        void onLongClick( int position);
+    }
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener ){
+        this. mOnItemClickListener=onItemClickListener;
+    }
 
 }

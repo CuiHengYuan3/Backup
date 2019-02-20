@@ -5,16 +5,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
+<ProgressBar
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="70dp"
+    android:id="@+id/progress_Bar"
+    />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="asdfasdfdsfasdfds"
+        android:layout_gravity="center"
+        android:text="正在加载请稍后"
+       android:textSize="20dp"
+        android:textColor="@color/deepblue"
+        android:id="@+id/progress"
         />
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/refresh"
+        >
     <android.support.v7.widget.RecyclerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/Rec"
-    >
 
+    >
 </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </android.support.v7.widget.LinearLayoutCompat>

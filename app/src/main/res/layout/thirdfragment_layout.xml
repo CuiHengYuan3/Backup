@@ -2,12 +2,34 @@
 <android.support.v7.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:id="@+id/progress_Bar3"
+        />
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="正在加载请稍后"
+        android:textSize="20dp"
+        android:textColor="@color/deepblue"
+        android:id="@+id/progress3"
+        />
+
+
+
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="This is the third Fragment"
-        android:textSize="50dp"
-        android:gravity="center"
-        />
+        android:id="@+id/Rec3"
+        >
+    </android.support.v7.widget.RecyclerView>
+
 </android.support.v7.widget.LinearLayoutCompat>
