@@ -12,4 +12,5 @@
     <string name="top250">Top250</string>
     <string name="moviename">电影名</string>
     <string name="title_activity_detail">detailActivity</string>
+    <string name="movie_detail">电影详细</string>
 </resources>
