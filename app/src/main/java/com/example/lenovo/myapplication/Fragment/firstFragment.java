@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.example.lenovo.myapplication.Activity.detailActivity;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.myapplication.adapter.RecyclerView_adapter;
-import com.example.lenovo.myapplication.util.gson.Subjects;
+import com.example.lenovo.myapplication.util.gson1.Subjects;
 import com.example.lenovo.myapplication.util.http.OKHttp;
 import com.example.lenovo.myapplication.util.http.handleResponse;
 
@@ -103,6 +103,7 @@ public class firstFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException {
                 String responsText = response.body().string();
                 subjectsList = handleResponse.handleSubjectsResponse(responsText);
+
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -117,11 +118,14 @@ public class firstFragment extends Fragment {
                                 String movieId = subjects.getId();
                                 String tiltle=subjects.getTitle();
                                 String imgUrl=subjects.images.getSmall();
+                               double pinfen=subjects.rating.average;
                                 Intent intent = new Intent(getActivity(), detailActivity.class);
                                 intent.putExtra("movieID", movieId);
                                 intent.putExtra("tiltle",tiltle);
                                 intent.putExtra("url",imgUrl);
+                                intent.putExtra("pinFen",pinfen);
                                 startActivity(intent);
+                                Log.d(TAG, "onClick: ");
                             }
 
                             @Override

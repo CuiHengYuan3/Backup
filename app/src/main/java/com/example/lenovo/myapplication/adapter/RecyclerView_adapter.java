@@ -12,9 +12,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lenovo.myapplication.R;
-import com.example.lenovo.myapplication.util.gson.Casts;
-import com.example.lenovo.myapplication.util.gson.Directors;
-import com.example.lenovo.myapplication.util.gson.Subjects;
+import com.example.lenovo.myapplication.util.gson1.Casts;
+import com.example.lenovo.myapplication.util.gson1.Directors;
+import com.example.lenovo.myapplication.util.gson1.Subjects;
 import com.example.lenovo.myapplication.Fragment.myApplication;
 
 import java.util.ArrayList;

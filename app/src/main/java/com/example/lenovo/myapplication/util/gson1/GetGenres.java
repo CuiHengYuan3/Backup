@@ -1,6 +1,4 @@
-package com.example.lenovo.myapplication.util.gson;
-
-import org.json.JSONArray;
+package com.example.lenovo.myapplication.util.gson1;
 
 public class GetGenres { //这个暂时不要
 //    String genresStr = "";

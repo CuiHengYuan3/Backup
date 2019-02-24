@@ -1,6 +1,6 @@
 package com.example.lenovo.myapplication.util.http;
 
-import com.example.lenovo.myapplication.util.gson.Subjects;
+import com.example.lenovo.myapplication.util.gson1.Subjects;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -8,12 +8,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class handleResponse {
     public static ArrayList<Subjects> handleSubjectsResponse(String response) {

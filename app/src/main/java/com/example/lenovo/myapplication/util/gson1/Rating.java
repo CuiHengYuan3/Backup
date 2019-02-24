@@ -1,4 +1,4 @@
-package com.example.lenovo.myapplication.util.gson;
+package com.example.lenovo.myapplication.util.gson1;
 
 public class Rating {
   public double getAverage() {

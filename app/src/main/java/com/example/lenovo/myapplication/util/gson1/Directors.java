@@ -1,6 +1,6 @@
-package com.example.lenovo.myapplication.util.gson;
+package com.example.lenovo.myapplication.util.gson1;
 
-public class Casts {
+public class Directors {
 public String name;
 
     public String getName() {

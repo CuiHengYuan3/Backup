@@ -4,187 +4,214 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.detailActivity"
     android:orientation="vertical"
-    >
-<Toolbar
-    android:layout_width="match_parent"
-    android:layout_height="45dp"
-    tools:ignore="NewApi"
-    android:background="@color/red"
-    android:title="                         电影详细 "
-    >
-</Toolbar>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/scrollView"
-    android:scrollbars="vertical"
->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <RelativeLayout
-        android:id="@+id/rl_top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/red"
-        android:padding="10dp"
-        >
+    tools:context=".Activity.detailActivity">
 
-        <ImageView
-            android:id="@+id/iv_img"
-            android:layout_width="110dp"
-            android:layout_height="145dp"
-            android:layout_centerHorizontal="true"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
+    <Toolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_below="@id/rl_top"
-        android:id="@+id/R2"
-        >
-    <TextView
-        android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:id="@+id/DmovieName"
-        android:textColor="@color/black"
-        android:textSize="25dp"
-        android:text=" "
-        />
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="10dp"
-           android:text="上映时间:"
-android:textColor="@color/gray"
-android:layout_below="@id/DmovieName"
-          android:gravity="center"
-           android:id="@+id/showTime"
-           />
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="10dp"
-    android:layout_below="@id/showTime"
-    android:textColor="@color/gray"
-android:text="类型“"
-    android:id="@+id/kinds"
-    />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="10dp"
-        android:layout_below="@id/kinds"
-        android:text="片长"
-        android:textColor="@color/gray"
-android:id="@+id/movielong"
-        />
+        android:background="@color/red"
+        android:title="                         电影详细 "
+        tools:ignore="NewApi"></Toolbar>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+
         <RelativeLayout
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/Dpingfen"
-            android:layout_toRightOf="@id/showTime"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="20dp"
-     android:background="@color/lightGreen"
-            >
-          <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="0dp"
-              android:text="豆瓣评分"
-              android:gravity="center"
-              android:textColor="@color/black"
-              android:id="@+id/pf2"
-              />
- <TextView
-     android:layout_width="55dp"
-     android:layout_height="55dp"
-     android:layout_below="@id/pf2"
-     android:layout_marginLeft="15dp"
-     android:textColor="@color/black"
-     android:textSize="30dp"
-     android:text="0.0"
-     android:gravity="center"
-     android:id="@+id/pf3"
-     />
-     <TextView
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:id="@+id/pfNumber"
-         android:text="......人"
-         android:layout_below="@id/pf3"
-         android:gravity="center"
-         android:textColor="@color/black"
-         />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_img"
+                    android:layout_width="110dp"
+                    android:layout_height="145dp"
+                    android:layout_centerHorizontal="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/R2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_top"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/DmovieName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:text=" "
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/showTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/DmovieName"
+                    android:gravity="center"
+                    android:text="上映时间:"
+                    android:textColor="@color/gray" />
+
+                <TextView
+                    android:id="@+id/kinds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/showTime"
+                    android:text="类型:"
+                    android:textColor="@color/gray" />
+
+                <TextView
+                    android:id="@+id/movielong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/kinds"
+                    android:text="片长:"
+                    android:textColor="@color/gray" />
+
+                <TextView
+                    android:id="@+id/country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/movielong"
+                    android:text="国家："
+                    android:textColor="@color/gray" />
+
+                <RelativeLayout
+                    android:id="@+id/Dpingfen"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/showTime"
+                    android:background="@color/lightGreen">
+
+                    <TextView
+                        android:id="@+id/pf2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="豆瓣评分"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/pf3"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_below="@id/pf2"
+                        android:layout_marginLeft="15dp"
+                        android:gravity="center"
+                        android:text="0.0"
+                        android:textColor="@color/black"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/pfNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/pf3"
+                        android:gravity="center"
+                        android:text="......人"
+                        android:textColor="@color/black" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/kanGuo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/DmovieName"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="142dp"
+                    android:layout_marginLeft="142dp"
+                    android:layout_marginBottom="-4dp"
+                    android:gravity="center_vertical"
+                    android:text="看过："
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/xiangKan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/DmovieName"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="198dp"
+                    android:layout_marginLeft="198dp"
+                    android:layout_marginBottom="-2dp"
+                    android:gravity="center_vertical"
+                    android:text="想看:"
+                    android:textSize="10dp" />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/Dline"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@id/R2"
+                android:background="@color/gray" />
+
+            <TextView
+                android:id="@+id/jianJie"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/Dline"
+                android:text="简介"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/brief"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/jianJie"
+                android:text="  "
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/影人"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/brief"
+                android:gravity="center_vertical"
+                android:text="影人"
+                android:textColor="@color/gray"
+                android:textSize="20dp" />
+
+            <View
+                android:id="@+id/Dline2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@id/影人"
+                android:background="@color/gray" />
+
+            <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:id="@+id/juZhaoa"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="100dp"-->
+                <!--android:layout_below="@id/影人">-->
+
+
+            <!--</android.support.v7.widget.RecyclerView>-->
+
 
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/kanGuo"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_alignBottom="@+id/DmovieName"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="142dp"
-            android:layout_marginLeft="142dp"
-            android:layout_marginBottom="-4dp"
-            android:text="看过："
-            android:gravity="center_vertical"
-            android:textSize="10dp"
-            />
 
-        <TextView
-            android:id="@+id/xiangKan"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_alignBottom="@+id/DmovieName"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="198dp"
-            android:layout_marginLeft="198dp"
-            android:layout_marginBottom="-2dp"
-            android:text="想看:"
-            android:gravity="center_vertical"
-            android:textSize="10dp"
-            />
-
-    </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/R2"
-            android:background="@color/gray"
-           android:id="@+id/Dline"
-            />
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="30dp"
-    android:id="@+id/jianJie"
-    android:layout_below="@id/Dline"
-    android:text="简介"
-    android:textColor="@color/black"
-    android:textSize="20dp"
-    />
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/brief"
-android:text="  "
-    android:layout_below="@id/jianJie"
-    android:textSize="15dp"
-    android:textColor="@color/black"
-    />
-    </RelativeLayout>
-<!--<android.support.v7.widget.RecyclerView-->
-    <!--android:layout_width=""-->
-    <!--android:layout_height=""></android.support.v7.widget.RecyclerView>-->
-
-
-
-
-</ScrollView>
+    </ScrollView>
 
 </LinearLayout>
