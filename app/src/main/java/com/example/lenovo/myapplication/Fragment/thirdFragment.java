@@ -1,17 +1,20 @@
 package com.example.lenovo.myapplication.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.lenovo.myapplication.Activity.detailActivity;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.myapplication.adapter.RecyclerView_adapter;
 import com.example.lenovo.myapplication.util.gson1.Subjects;
@@ -61,6 +64,27 @@ public class thirdFragment extends Fragment {
                         recyclerView.setAdapter(recyclerViewAdapter);
                         progressBar.setVisibility(View.GONE);
                         textView.setVisibility(View.GONE);
+                        recyclerViewAdapter.setOnItemClickListener(new RecyclerView_adapter.OnItemClickListener() {
+                            @Override
+                            public void onClick(int position) {
+                                Subjects subjects = subjectsList.get(position);
+                                String movieId = subjects.getId();
+                                String tiltle=subjects.getTitle();
+                                String imgUrl=subjects.images.getSmall();
+                                double pinfen=subjects.rating.average;
+                                Intent intent = new Intent(getActivity(), detailActivity.class);
+                                intent.putExtra("movieID", movieId);
+                                intent.putExtra("tiltle",tiltle);
+                                intent.putExtra("url",imgUrl);
+                                intent.putExtra("pinFen",pinfen);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onLongClick(int position) {
+
+                            }
+                        });
 
                     }
                 });

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="155dp"
     android:padding="6dp"
+    android:background="@drawable/button"
     >
     <ImageView
         android:id="@+id/iv_img"
@@ -13,16 +14,16 @@
         android:src="@drawable/ic_menu_manage"
         android:scaleType="centerCrop"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/check"
-android:background="@drawable/button"
-        android:layout_alignBaseline="@id/iv_img"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="300dp"
-        android:text="详细"
-        android:textColor="@color/red"
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:id="@+id/check"-->
+<!--android:background="@drawable/button"-->
+        <!--android:layout_alignBaseline="@id/iv_img"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginLeft="300dp"-->
+        <!--android:text="详细"-->
+        <!--android:textColor="@color/red"-->
 
         />
     <TextView

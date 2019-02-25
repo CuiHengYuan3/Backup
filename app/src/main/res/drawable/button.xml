@@ -10,7 +10,7 @@
     android:color="@color/whilt"/>
 <stroke
     android:width="2dp"
-    android:color="@color/red"/>
+    android:color="@color/whilt"/>
 </shape>
 </item>
 <item
@@ -22,7 +22,7 @@
             android:color="@color/lightGreen"/>
         <stroke
             android:width="2dp"
-            android:color="@color/red"/>
+            android:color="@color/whilt"/>
     </shape>
 
 </item>
