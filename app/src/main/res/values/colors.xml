@@ -13,4 +13,7 @@
 <color name="deepGray">#555454</color>
 <color name="whilt">#FFFFFF</color>
 <color name="nodeepgray">#D8D8D8</color>
+<color name="bakground">#9F81F7</color>
+<color name="bakground2">#A9F5F2</color>
+<color name="lightGray">#D8D8D8</color>
 </resources>

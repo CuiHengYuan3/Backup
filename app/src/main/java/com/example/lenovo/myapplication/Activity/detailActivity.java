@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,10 @@ import com.example.lenovo.myapplication.util.gson2.Genres;
 import com.example.lenovo.myapplication.util.gson2.detail;
 import com.example.lenovo.myapplication.util.http.OKHttp;
 import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -43,6 +49,9 @@ public class detailActivity extends AppCompatActivity {
     public TextView brief;
     public RecyclerView juZhaoa;
 public detail detail;
+   public   ScrollView scrollView ;
+public ProgressBar progressBar;
+ public  TextView waitText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +60,8 @@ public detail detail;
         setContentView(R.layout.activity_detail2);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        progressBar=findViewById(R.id.ProgressBar_detail);
+     waitText=findViewById(R.id.wait);
         iv_img = findViewById(R.id.iv_img);
         DmovieName = findViewById(R.id.DmovieName);
         showTime = findViewById(R.id.showTime);
@@ -62,6 +73,8 @@ public detail detail;
         pf3 = findViewById(R.id.pf3);
         pfNumber = findViewById(R.id.pfNumber);
         brief = findViewById(R.id.brief);
+scrollView=findViewById(R.id.scrollView);
+scrollView.setVisibility(View.GONE);
 
 String id=intent.getStringExtra("movieID");
          final String tiltle=intent.getStringExtra("tiltle");
@@ -83,7 +96,32 @@ String id=intent.getStringExtra("movieID");
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Log.d(TAG, "onResponse: ");
-                String responsText = response.body().string();
+                final String responsText = response.body().string();
+runOnUiThread(new Runnable() {
+    @Override
+    public void run() {
+        try {
+            JSONObject jsonObject=new JSONObject(responsText);
+            JSONArray jsonArray=jsonObject.getJSONArray("countries");
+            for (int i = 0; i <jsonArray.length() ; i++) {
+                String countryNmae=jsonArray.getString(i);
+
+                country.setText(country.getText()+countryNmae+"/");
+            }
+            country.setText(country.getText().subSequence(0,country.length()-1));
+            JSONObject jsonObject2=new JSONObject(responsText);
+            JSONArray jsonArray2=jsonObject2.getJSONArray("genres");
+            for (int i = 0; i <jsonArray2.length() ; i++) {
+                String movieKind=jsonArray2.getString(i);
+                kinds.setText(kinds.getText()+movieKind+"/");
+            }
+            kinds.setText(kinds.getText().subSequence(0,kinds.length()-1));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+});
+
                 Gson gson=new Gson();
                 detail=gson.fromJson(responsText, com.example.lenovo.myapplication.util.gson2.detail.class);
            runOnUiThread(new Runnable() {
@@ -102,12 +140,14 @@ String id=intent.getStringExtra("movieID");
 //               country.setText(country.getText()+countries.countryName+"/");
 //           }
 //              country.setText(country.getText().subSequence(0,country.length()-1));
-//                   kanGuo.setText(detail.reviews_count);
-//                   xiangKan.setText(detail.wish_count);
-//                   pf3.setText(String.valueOf(penFen));
-//                   pfNumber.setText(detail.collect_count+"人评价");
-//                   brief.setText(detail.summary);
-               
+                   kanGuo.setText(kanGuo.getText()+String.valueOf(detail.reviews_count)+"人");
+                   xiangKan.setText(xiangKan.getText()+String.valueOf(detail.wish_count)+"人");
+                   pf3.setText(pf3.getText()+String.valueOf(penFen));
+                   pfNumber.setText(String.valueOf(detail.collect_count)+"人评价");
+                   brief.setText(detail.summary);
+                   scrollView.setVisibility(View.VISIBLE);
+               progressBar.setVisibility(View.GONE);
+               waitText.setVisibility(View.GONE);
                }
            });
             }

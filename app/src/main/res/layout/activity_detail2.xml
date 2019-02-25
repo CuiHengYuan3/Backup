@@ -11,8 +11,24 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@color/red"
-        android:title="                         电影详细 "
+        android:title="                       电影详细 "
         tools:ignore="NewApi"></Toolbar>
+
+<ProgressBar
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:id="@+id/ProgressBar_detail"
+    android:layout_marginTop="35dp"/>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="正在加载呢，稍安勿躁"
+    android:layout_marginLeft="90dp"
+    android:textColor="@color/gray"
+    android:textSize="20dp"
+    android:id="@+id/wait"
+    />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -27,14 +43,14 @@
             <RelativeLayout
                 android:id="@+id/rl_top"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/red"
+                android:layout_height="250dp"
+                android:background="@color/lightGray"
                 android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/iv_img"
-                    android:layout_width="110dp"
-                    android:layout_height="145dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true" />
 
             </RelativeLayout>
@@ -68,6 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_below="@id/showTime"
+                    android:layout_marginTop="10dp"
                     android:text="类型:"
                     android:textColor="@color/gray" />
 
@@ -76,6 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_below="@id/kinds"
+                    android:layout_marginTop="10dp"
                     android:text="片长:"
                     android:textColor="@color/gray" />
 
@@ -84,14 +102,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_below="@id/movielong"
+                    android:layout_marginTop="10dp"
                     android:text="国家："
                     android:textColor="@color/gray" />
 
                 <RelativeLayout
                     android:id="@+id/Dpingfen"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="200dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="149dp"
                     android:layout_marginTop="20dp"
                     android:layout_toRightOf="@id/showTime"
                     android:background="@color/lightGreen">
@@ -99,7 +118,7 @@
                     <TextView
                         android:id="@+id/pf2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="20dp"
                         android:layout_marginTop="0dp"
                         android:gravity="center"
                         android:text="豆瓣评分"
@@ -112,7 +131,6 @@
                         android:layout_below="@id/pf2"
                         android:layout_marginLeft="15dp"
                         android:gravity="center"
-                        android:text="0.0"
                         android:textColor="@color/black"
                         android:textSize="30dp" />
 
@@ -123,7 +141,9 @@
                         android:layout_below="@id/pf3"
                         android:gravity="center"
                         android:text="......人"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="10dp"
+                        />
 
                 </RelativeLayout>
 
@@ -131,29 +151,28 @@
                     android:id="@+id/kanGuo"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:layout_alignBottom="@+id/DmovieName"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginStart="142dp"
-                    android:layout_marginLeft="142dp"
-                    android:layout_marginBottom="-4dp"
+
+                    android:layout_below="@+id/Dpingfen"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="29dp"
+                    android:layout_marginRight="29dp"
                     android:gravity="center_vertical"
                     android:text="看过："
-                    android:textSize="10dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/xiangKan"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:layout_alignBottom="@+id/DmovieName"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginStart="198dp"
-                    android:layout_marginLeft="198dp"
-                    android:layout_marginBottom="-2dp"
+                    android:layout_below="@+id/kanGuo"
+
+                    android:layout_alignStart="@+id/kanGuo"
+                    android:layout_alignLeft="@+id/kanGuo"
                     android:gravity="center_vertical"
                     android:text="想看:"
-                    android:textSize="10dp" />
+                    android:textSize="15dp" />
 
             </RelativeLayout>
 
@@ -175,9 +194,10 @@
 
             <TextView
                 android:id="@+id/brief"
-                android:layout_width="match_parent"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/jianJie"
+                android:layout_marginLeft="8dp"
                 android:text="  "
                 android:textColor="@color/black"
                 android:textSize="15dp" />
@@ -200,10 +220,10 @@
                 android:background="@color/gray" />
 
             <!--<android.support.v7.widget.RecyclerView-->
-                <!--android:id="@+id/juZhaoa"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="100dp"-->
-                <!--android:layout_below="@id/影人">-->
+            <!--android:id="@+id/juZhaoa"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:layout_below="@id/影人">-->
 
 
             <!--</android.support.v7.widget.RecyclerView>-->
