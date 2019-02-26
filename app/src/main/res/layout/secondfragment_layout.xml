@@ -2,12 +2,40 @@
 <android.support.v7.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<TextView
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:text="This is the second Fragment"
-    android:textSize="50dp"
-    android:gravity="center"
+    android:orientation="vertical"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+android:layout_weight="5"
+        android:textColor="@color/black"
+        />
+<Button
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@drawable/button"
     />
+</LinearLayout>
+
+
+
+
+
+
+    <!--<android.support.v7.widget.SearchView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/searchView"-->
+    <!--android:queryHint="输入想查找影片的关键词/类型/国家/地区/导演等"-->
+    <!--android:iconifiedByDefault="false"-->
+<!--android:inputType="text"-->
+    <!--&gt;-->
+
+
+<!--</android.support.v7.widget.SearchView>-->
 </android.support.v7.widget.LinearLayoutCompat>
