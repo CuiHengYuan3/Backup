@@ -7,12 +7,17 @@
     android:orientation="vertical"
     tools:context=".Activity.detailActivity">
 
-    <Toolbar
+    <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@color/red"
-        android:title="                       电影详细 "
-        tools:ignore="NewApi"></Toolbar>
+        app:navigationIcon="@drawable/back_button"
+
+        tools:ignore="NewApi"
+        android:id="@+id/toolbar_detail"
+        >
+
+    </android.support.v7.widget.Toolbar>
 
 <ProgressBar
     android:layout_width="wrap_content"

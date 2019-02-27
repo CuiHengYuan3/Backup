@@ -80,6 +80,7 @@ public class RecyclerView_adapter extends RecyclerView.Adapter<RecyclerView_adap
                     mOnItemClickListener.onClick(viewHolder.getAdapterPosition());
                 }
             });
+            Log.d(TAG, "onBindViewHolder: ");
             viewHolder.outView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {

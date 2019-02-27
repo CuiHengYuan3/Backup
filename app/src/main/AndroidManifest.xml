@@ -7,8 +7,8 @@
     <application
         android:name=".Fragment.myApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/douban"
+        android:label="@string/DBmovie"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -25,7 +25,8 @@
         <activity
             android:name=".Activity.detailActivity"
             android:label="                        电影详细"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activity.searchActivity"></activity>
     </application>
 
 </manifest>

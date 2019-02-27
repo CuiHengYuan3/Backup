@@ -13,4 +13,5 @@
     <string name="moviename">电影名</string>
     <string name="title_activity_detail">detailActivity</string>
     <string name="movie_detail">电影详细</string>
+    <string name="DBmovie">豆瓣电影</string>
 </resources>

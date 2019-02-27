@@ -62,8 +62,15 @@ public class detailActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: ");
         Intent intent = getIntent();
         setContentView(R.layout.activity_detail2);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+      Toolbar toolbar=findViewById(R.id.toolbar_detail);
+      toolbar.setTitle("              电影详细");
+      setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         juZhaoa = findViewById(R.id.juZhaoa);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);

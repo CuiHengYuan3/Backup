@@ -1,80 +1,47 @@
 package com.example.lenovo.myapplication.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.GridView;
 
+import com.example.lenovo.myapplication.Activity.detailActivity;
+import com.example.lenovo.myapplication.Activity.searchActivity;
 import com.example.lenovo.myapplication.R;
+import com.example.lenovo.myapplication.adapter.gridview_adapter;
 
-public class secondFragment extends Fragment implements View.OnClickListener {
-    //    SearchView searchView;
-  private EditText editText;
-   private Button sentButton;
-    private TextView textView1;
-    private TextView textView2;
-    private TextView textView3;
-    private TextView textView4;
-    private TextView textView5;
-    private TextView textView6;
-    private TextView textView7;
-    private TextView textView8;
-    private TextView textView9;
-    private TextView textView10;
-    private TextView textView11;
-    private TextView textView12;
-    private TextView textView13;
-    private TextView textView14;
-    private TextView textView15;
-    private TextView textView16;
-    private TextView textView17;
-    private TextView textView18;
-    @Override
-    public void onClick(View v) {
-switch (v.getId()){
-    case R.id.T1:
-
-}
-    }
-
+public class secondFragment extends Fragment {
+ GridView gridView;
+    private String[] leixingNames = {"剧情","爱情","喜剧","科幻","动作","悬疑","犯罪","恐怖","青春","励志","战争","文艺","黑色幽默","传记","情色","暴力","音乐","家庭"};
+  gridview_adapter gridviewAdapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.secondfragment_layout, container, false);
-sentButton.setOnClickListener(new View.OnClickListener() {
+ gridView=view.findViewById(R.id.gridView);
+gridviewAdapter=new gridview_adapter(myApplication.getContext(),leixingNames);
+gridView.setAdapter(gridviewAdapter);
+gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     @Override
-    public void onClick(View v) {
-     String kinds= String.valueOf(editText.getText());
-
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String name = leixingNames[(int)id];
+goToSearchActivity(name);
     }
 });
 
-
-
-        //    searchView=view.findViewById(R.id.searchView);
-//   // searchView.setImeOptions(0);
-//searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//    @Override
-//    public boolean onQueryTextSubmit(String s) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean onQueryTextChange(String s) {
-//        return false;
-//    }
-//});
-
-
-        return view;
+    return  view;
     }
+public  void goToSearchActivity(String kindName){
+    Intent intent=new Intent(getActivity(),searchActivity.class);
+intent.putExtra("kindNmae",kindName);
+startActivity(intent);
 
+    }
 
 }

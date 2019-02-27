@@ -7,260 +7,49 @@
     >
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="55dp"
+    android:orientation="horizontal"
+
+    >
     <EditText
         android:layout_width="0dp"
-        android:layout_height="60dp"
-android:layout_weight="5"
-        android:textColor="@color/black"
-        />
-<Button
-    android:layout_width="0dp"
-    android:layout_height="match_parent"
-    android:layout_weight="1"
-    android:background="@drawable/button"
-    />
+        android:layout_height="match_parent"
+        android:id="@+id/editText"
+    android:layout_weight="5"
 
+        />
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/Ssearch_button"
+ android:layout_weight="1"
+        />
 
 </LinearLayout>
-
+    <TextView
+        android:id="@+id/jianJie"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/Dline"
+        android:text="    电影分类"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        />
 <View
     android:layout_width="match_parent"
-    android:layout_height="4dp"
-    android:background="@color/lightGray"
+    android:layout_height="2dp"
+android:background="@color/gray"
+
     />
-    <TextView
-        android:id="@+id/TmovieKinds"
+    <GridView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text=" 影片类型分类"
-        android:textColor="@color/black"
-    android:gravity="center"
-        android:textSize="23dp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:background="@color/lightGray"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-        android:text="动作"
-           android:id="@+id/T1"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:id="@+id/T2"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="剧情"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:id="@+id/T3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="爱情"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/T4"
-            android:layout_weight="1"
-            android:text="喜剧"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/T5"
-            android:layout_weight="1"
-            android:text="科幻"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="青春"
-            android:id="@+id/T6"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/T7"
-            android:layout_weight="1"
-            android:text="励志"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/T8"
-            android:layout_weight="1"
-            android:text="战争"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="文艺"
-            android:id="@+id/T9"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/T10"
-            android:text="黑色幽默"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="传记"
-            android:id="@+id/T11"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:id="@+id/T12"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="情色"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="暴力"
-            android:id="@+id/T13"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="音乐"
-            android:gravity="center"
-            android:id="@+id/T14"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="家庭"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:id="@+id/T15"
-            android:textColor="@color/black"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="恐怖"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            android:id="@+id/T16"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="犯罪"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:id="@+id/T17"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="悬疑"
-            android:gravity="center"
-            android:id="@+id/T18"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text=""
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            />
-
-
-
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:numColumns="4"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="5dp"
+        android:id="@+id/gridView"
+        >
+    </GridView>
 
 
 
