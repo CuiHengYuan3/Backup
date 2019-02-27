@@ -117,15 +117,15 @@ public class firstFragment extends Fragment {
                                 Subjects subjects = subjectsList.get(position);
                                 String movieId = subjects.getId();
                                 String tiltle=subjects.getTitle();
-                                String imgUrl=subjects.images.getSmall();
-                               double pinfen=subjects.rating.average;
+                                String imgUrl=subjects.getImages().getSmall();
+                               double pinfen=subjects.getRating().average;
                                 Intent intent = new Intent(getActivity(), detailActivity.class);
                                 intent.putExtra("movieID", movieId);
                                 intent.putExtra("tiltle",tiltle);
                                 intent.putExtra("url",imgUrl);
                                 intent.putExtra("pinFen",pinfen);
                                 startActivity(intent);
-                                Log.d(TAG, "onClick: ");
+                                Log.d(TAG, movieId);
                             }
 
                             @Override

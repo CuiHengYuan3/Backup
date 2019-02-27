@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class RecyclerView_adapter extends RecyclerView.Adapter<RecyclerView_adapter.ViewHolder> {
     private static final String TAG = "RecyclerView_adapter";
-private   OnItemClickListener mOnItemClickListener ;
+    private OnItemClickListener mOnItemClickListener;
     private ArrayList<Subjects> mSubjects;
 
     public RecyclerView_adapter(Context context, ArrayList<Subjects> mSubjects) {
@@ -29,7 +29,7 @@ private   OnItemClickListener mOnItemClickListener ;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        View  outView;//最外层view
+        View outView;//最外层view
         ImageView moviePic;
         TextView movieName;
         ImageView star1;
@@ -55,7 +55,7 @@ private   OnItemClickListener mOnItemClickListener ;
             star4 = itemView.findViewById(R.id.iv_start4);
             star5 = itemView.findViewById(R.id.iv_start5);
             view = itemView.findViewById(R.id.line);
-            outView=itemView;
+            outView = itemView;
             Log.d(TAG, "ViewHolder: ");
         }
     }
@@ -64,7 +64,7 @@ private   OnItemClickListener mOnItemClickListener ;
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recview_item_layout, viewGroup, false);
-         ViewHolder holder = new ViewHolder(view);
+        ViewHolder holder = new ViewHolder(view);
 
         Log.d(TAG, "onCreateViewHolder: ");
         return holder;
@@ -72,39 +72,44 @@ private   OnItemClickListener mOnItemClickListener ;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder,final int i) {//??????????final?
-        if( mOnItemClickListener!= null){
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {//??????????final?
+        if (mOnItemClickListener != null) {
             viewHolder.outView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mOnItemClickListener.onClick(i);
+                    mOnItemClickListener.onClick(viewHolder.getAdapterPosition());
                 }
             });
-viewHolder.outView.setOnLongClickListener(new View.OnLongClickListener() {
-    @Override
-    public boolean onLongClick(View v) {
-        mOnItemClickListener.onLongClick(i);
-        return false;
-    }
-});
+            viewHolder.outView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    mOnItemClickListener.onLongClick(viewHolder.getAdapterPosition());
+                    return false;
+                }
+            });
         }
 
-        Subjects subjects = mSubjects.get(i);
-        Glide.with(myApplication.getContext()).load(subjects.images.getSmall()).into(viewHolder.moviePic);
-        viewHolder.movieName.setText(subjects.title);
-        for (Directors directors : subjects.directors) {
-
-            viewHolder.director.setText(viewHolder.director.getText() + directors.getName() + "/");
+        Subjects subjects = mSubjects.get(viewHolder.getAdapterPosition());
+        Glide.with(myApplication.getContext()).load(subjects.getImages().getSmall()).into(viewHolder.moviePic);
+        viewHolder.movieName.setText(subjects.getTitle());
+      String DaoYanName="";
+        for (Directors directors : subjects.getDirectors()) {
+            Log.d(TAG, "onBindViewHolder: 1");
+       DaoYanName+=directors.getName() + "/";
         }
+        viewHolder.director.setText("导演："+DaoYanName);
         viewHolder.director.setText(viewHolder.director.getText().subSequence(0, viewHolder.director.length() - 1));
-        for (Casts casts : subjects.casts) {
-
-            viewHolder.actors.setText(viewHolder.actors.getText() + casts.getName() + "/");
+     String yanYuanName="";
+        for (Casts casts : subjects.getCasts()) {
+            Log.d(TAG, "onBindViewHolder: 2");
+         yanYuanName+=casts.getName()+"/";
         }
+        viewHolder.actors.setText("演员:" + yanYuanName);
+
         viewHolder.actors.setText(viewHolder.actors.getText().subSequence(0, viewHolder.actors.length() - 1));
-        String pinFen = String.valueOf(subjects.rating.getAverage());
+        String pinFen = String.valueOf(subjects.getRating().getAverage());
         viewHolder.score.setText(pinFen);
-        String scroe = subjects.rating.getStars();
+        String scroe = subjects.getRating().getStars();
         double a = (double) (Integer.parseInt(scroe)) / 10;
         a--;
         viewHolder.star1.setImageResource(R.drawable.start1);
@@ -149,12 +154,15 @@ viewHolder.outView.setOnLongClickListener(new View.OnLongClickListener() {
         return mSubjects.size();
 
     }
-    public interface OnItemClickListener{
-        void onClick( int position);
-        void onLongClick( int position);
+
+    public interface OnItemClickListener {
+        void onClick(int position);
+
+        void onLongClick(int position);
     }
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener ){
-        this. mOnItemClickListener=onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener;
     }
 
 }

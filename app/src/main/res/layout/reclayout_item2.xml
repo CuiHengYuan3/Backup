@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+android:padding="10dp"
     >
 
     <ImageView
-    android:layout_width="70dp"
-    android:layout_height="80dp"
+    android:layout_width="80dp"
+    android:layout_height="100dp"
     android:id="@+id/Ijuzhao"
-
+        android:scaleType="centerCrop"
         />
 <TextView
-    android:layout_width="wrap_content"
+    android:layout_width="80dp"
     android:layout_height="20dp"
     android:id="@+id/shiYan"
    android:layout_marginTop="10dp"
+    android:layout_gravity="center"
+ android:gravity="center"
+    android:textSize="15dp"
+    android:maxLines="1"
     />
 
 </android.support.v7.widget.LinearLayoutCompat>

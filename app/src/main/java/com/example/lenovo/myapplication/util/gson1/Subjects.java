@@ -3,13 +3,29 @@ package com.example.lenovo.myapplication.util.gson1;
 import java.util.List;
 
 public class Subjects {
-public String title;
-public String name;
-public String id;
-public List<Casts> casts;
-public List<Directors> directors;
-public Images images;
-public  Rating rating;
+private String title;
+private String name;
+private String id;
+private List<Casts> casts;
+private List<Directors> directors;
+private Images images;
+private Rating rating;
+
+    public List<Casts> getCasts() {
+        return casts;
+    }
+
+    public List<Directors> getDirectors() {
+        return directors;
+    }
+
+    public Images getImages() {
+        return images;
+    }
+
+    public Rating getRating() {
+        return rating;
+    }
 
     public String getTitle() {
         return title;

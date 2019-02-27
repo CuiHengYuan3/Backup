@@ -44,7 +44,7 @@
                 android:id="@+id/rl_top"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="@color/lightGray"
+                android:background="@color/lightBulu"
                 android:padding="10dp">
 
                 <ImageView
@@ -188,7 +188,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_below="@id/Dline"
-                android:text="简介"
+                android:text=" 简介"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
 
@@ -208,7 +208,7 @@
                 android:layout_height="30dp"
                 android:layout_below="@id/brief"
                 android:gravity="center_vertical"
-                android:text="影人"
+                android:text=" 影人"
                 android:textColor="@color/gray"
                 android:textSize="20dp" />
 
@@ -219,14 +219,14 @@
                 android:layout_below="@id/影人"
                 android:background="@color/gray" />
 
-            <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/juZhaoa"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:layout_below="@id/影人">-->
+            <android.support.v7.widget.RecyclerView
+            android:id="@+id/juZhaoa"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@id/影人">
 
 
-            <!--</android.support.v7.widget.RecyclerView>-->
+            </android.support.v7.widget.RecyclerView>
 
 
         </RelativeLayout>
