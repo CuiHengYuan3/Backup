@@ -1,2 +1,2 @@
 # DB2.0
-![](http://www.baidu.com/img/bdlogo.gif)
+看branch上传的视频(录频)，视频中没有展示手动搜索电影
