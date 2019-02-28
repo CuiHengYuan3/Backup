@@ -90,7 +90,7 @@ public class detailActivity extends AppCompatActivity {
         brief = findViewById(R.id.brief);
         scrollView = findViewById(R.id.scrollView);
         scrollView.setVisibility(View.GONE);
-////
+
         String id = intent.getStringExtra("movieID");
         final String tiltle = intent.getStringExtra("tiltle");
         final String imgUrl = intent.getStringExtra("url");

@@ -15,14 +15,21 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:id="@+id/editText"
-    android:layout_weight="5"
-
+    android:layout_weight="6"
+        android:hint="输入电影的关键字/类型/导演等"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/compass"
+        android:textSize="15dp"
+        android:imeOptions="actionDone"
         />
     <Button
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:id="@+id/Ssearch_button"
- android:layout_weight="1"
+        android:layout_weight="1"
+        android:text="搜索"
+        android:textColor="@color/black"
+        android:background="@drawable/button"
         />
 
 </LinearLayout>
@@ -48,6 +55,37 @@ android:background="@color/gray"
         android:horizontalSpacing="10dp"
         android:verticalSpacing="5dp"
         android:id="@+id/gridView"
+        >
+    </GridView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/gray"
+
+        />
+    <TextView
+        android:id="@+id/placeKind"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/Dline"
+        android:text="    地区分类"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/gray"
+
+        />
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="4"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="5dp"
+        android:id="@+id/gridView2"
         >
     </GridView>
 

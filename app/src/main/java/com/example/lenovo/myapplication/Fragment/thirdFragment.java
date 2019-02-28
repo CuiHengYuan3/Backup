@@ -98,7 +98,7 @@ public class thirdFragment extends Fragment {
         });
         if (!recyclerView.canScrollVertically(1)) {
             start = count;
-            count += 20;
+            count += 30;
             OKHttp.sendOKHttpcRequest("https://api.douban.com/v2/movie/top250?start=" + String.valueOf(start) + "&count=" + String.valueOf(count), new Callback() {
 
                 @Override

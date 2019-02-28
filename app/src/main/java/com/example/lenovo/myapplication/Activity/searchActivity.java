@@ -30,7 +30,8 @@ public class searchActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView_adapter recyclerViewAdapter;
     private ArrayList<Subjects> subjectsArrayList;
-
+private  int start=0;
+  private  int count=15;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +56,7 @@ public class searchActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         Intent intent = getIntent();
         String kindName = intent.getStringExtra("kindNmae");
-        OKHttp.sendOKHttpcRequest("https://api.douban.com/v2/movie/search?tag=" + kindName + "&start=0&count=15", new Callback() {
+        OKHttp.sendOKHttpcRequest("https://api.douban.com/v2/movie/search?tag=" + kindName + "&start="+start+"&count="+count, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -100,5 +101,35 @@ public class searchActivity extends AppCompatActivity {
                 });
             }
         });
+        if (!recyclerView.canScrollVertically(1)) {
+            start = count;
+            count += 30;
+            OKHttp.sendOKHttpcRequest("https://api.douban.com/v2/movie/top250?start=" + String.valueOf(start) + "&count=" + String.valueOf(count), new Callback() {
+
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    e.printStackTrace();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String responsText = response.body().string();
+
+                    ArrayList<Subjects> subjectsArrayList2 = new ArrayList<>();
+                    subjectsArrayList2 = handleResponse.handleSubjectsResponse(responsText);
+                    subjectsArrayList.addAll(subjectsArrayList2);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            recyclerViewAdapter.notifyDataSetChanged();
+                        }
+                    });
+                }
+
+            });
+
+
+
+        }
     }
 }
