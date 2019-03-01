@@ -17,6 +17,7 @@ https://github.com/cuihengyuan/DB2.0/blob/master/%E5%BD%95%E5%B1%8F_20190228_164
 **1**
 
 ****在recyclerView的adapter里面写接口并暴露给activity等来实现recycleView的点击,**可以实现相同的适配器在不同Context下的不同的点击事件***
+我只写了点击，没有长点击事件（其实是想写的）
  在adapter中
  ` private OnItemClickListener mOnItemClickListener;
 
@@ -70,7 +71,7 @@ public void onLongClick(int position) {
  
  ![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164153.png)
 ***
-![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164211.png)
+![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164441.png)
 ***
 ***
 ![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164228.png)
@@ -85,7 +86,7 @@ public void onLongClick(int position) {
 ***
 ![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164433.png)
 ***
-![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164441.png)
+![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164211.png)
 ***
 
 
