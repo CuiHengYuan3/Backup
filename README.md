@@ -33,7 +33,13 @@ public interface OnItemClickListener {
                             }
                         });`
  **2**
- 使用GridView来填充搜索界面
+ **使用GridView来填充搜索界面
+ 图在最后面**
+ **监听短时间内返回键的次数从而发出提醒**
+ 
+ 
+ 
+ 
  ![搜索界面](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164330.png)
  
                         
