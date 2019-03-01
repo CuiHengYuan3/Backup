@@ -28,6 +28,7 @@ public interface OnItemClickListener {
                         });`
  **2**
  使用GridView来填充搜索界面
+ ![pic]()
  
                         
                         
