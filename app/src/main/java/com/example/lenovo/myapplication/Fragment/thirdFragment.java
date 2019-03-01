@@ -67,8 +67,6 @@ public class thirdFragment extends Fragment {
                         recyclerView.setAdapter(recyclerViewAdapter);
                         progressBar.setVisibility(View.GONE);
                         textView.setVisibility(View.GONE);
-
-
                         recyclerViewAdapter.setOnItemClickListener(new RecyclerView_adapter.OnItemClickListener() {
                             @Override
                             public void onClick(int position) {
@@ -76,7 +74,7 @@ public class thirdFragment extends Fragment {
                                 String movieId = subjects.getId();
                                 String tiltle = subjects.getTitle();
                                 String imgUrl = subjects.getImages().getSmall();
-                                double pinfen = subjects.getRating().average;
+                                double pinfen = subjects.getRating().getAverage();
                                 Intent intent = new Intent(getActivity(), detailActivity.class);
                                 intent.putExtra("movieID", movieId);
                                 intent.putExtra("tiltle", tiltle);
@@ -124,7 +122,6 @@ public class thirdFragment extends Fragment {
             });
 
 
-
         }
         if (!recyclerView.canScrollVertically(1)) {
             start = count;
@@ -152,7 +149,6 @@ public class thirdFragment extends Fragment {
                 }
 
             });
-
 
 
         }

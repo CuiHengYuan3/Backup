@@ -1,8 +1,8 @@
 package com.example.lenovo.myapplication.util.gson2;
 
 public class casts {
-public  Avatars avatars;
-public String name;
+private   Avatars avatars;
+private String name;
 
     public Avatars getAvatars() {
         return avatars;

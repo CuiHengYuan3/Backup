@@ -25,19 +25,20 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class searchActivity extends AppCompatActivity {
-    String TAG="searchActivity";
+    String TAG = "searchActivity";
     Toolbar toolbar;
     RecyclerView recyclerView;
     RecyclerView_adapter recyclerViewAdapter;
     private ArrayList<Subjects> subjectsArrayList;
-private  int start=0;
-  private  int count=15;
+    private int start = 0;
+    private int count = 15;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_search);
-        toolbar=findViewById(R.id.search_toolBar);
+        toolbar = findViewById(R.id.search_toolBar);
         toolbar.setTitle("          此类型的电影");
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -47,16 +48,16 @@ private  int start=0;
             }
         });
 
-        final TextView textView=findViewById(R.id.wait_search);
-        final ProgressBar progressBar=findViewById(R.id.ProgressBar_search);
+        final TextView textView = findViewById(R.id.wait_search);
+        final ProgressBar progressBar = findViewById(R.id.ProgressBar_search);
         progressBar.setVisibility(View.VISIBLE);
         textView.setVisibility(View.VISIBLE);
-        recyclerView=findViewById(R.id.rec_search);
+        recyclerView = findViewById(R.id.rec_search);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         Intent intent = getIntent();
         String kindName = intent.getStringExtra("kindNmae");
-        OKHttp.sendOKHttpcRequest("https://api.douban.com/v2/movie/search?tag=" + kindName + "&start="+start+"&count="+count, new Callback() {
+        OKHttp.sendOKHttpcRequest("https://api.douban.com/v2/movie/search?tag=" + kindName + "&start=" + start + "&count=" + count, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -82,7 +83,7 @@ private  int start=0;
                                 String movieId = subjects.getId();
                                 String tiltle = subjects.getTitle();
                                 String imgUrl = subjects.getImages().getSmall();
-                                double pinfen = subjects.getRating().average;
+                                double pinfen = subjects.getRating().getAverage();
                                 Intent intent = new Intent(searchActivity.this, detailActivity.class);
                                 intent.putExtra("movieID", movieId);
                                 intent.putExtra("tiltle", tiltle);
@@ -127,7 +128,6 @@ private  int start=0;
                 }
 
             });
-
 
 
         }

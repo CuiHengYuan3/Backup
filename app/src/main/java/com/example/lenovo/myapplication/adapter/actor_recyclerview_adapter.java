@@ -29,8 +29,8 @@ public class actor_recyclerview_adapter extends RecyclerView.Adapter<actor_recyc
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-        actorImage=itemView.findViewById(R.id.Ijuzhao);
-        actorText= itemView.findViewById(R.id.shiYan);
+            actorImage = itemView.findViewById(R.id.Ijuzhao);
+            actorText = itemView.findViewById(R.id.shiYan);
 
         }
     }
@@ -39,24 +39,24 @@ public class actor_recyclerview_adapter extends RecyclerView.Adapter<actor_recyc
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view=LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.reclayout_item2,viewGroup,false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.reclayout_item2, viewGroup, false);
 
-    ViewHolder viewHolder=new ViewHolder(view);
-    return  viewHolder;
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
 
 
-        casts casts=castsList.get(i);
-viewHolder.actorText.setText(casts.getName());
- String picUrl=casts.avatars.small;
+        casts casts = castsList.get(i);
+        viewHolder.actorText.setText(casts.getName());
+        String picUrl = casts.getAvatars().small;
         Glide.with(myApplication.getContext()).load(picUrl).into(viewHolder.actorImage);
     }
 
     @Override
     public int getItemCount() {
-return  castsList.size();
+        return castsList.size();
     }
 }

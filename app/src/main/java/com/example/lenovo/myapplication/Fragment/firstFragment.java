@@ -40,17 +40,6 @@ public class firstFragment extends Fragment {
     private RecyclerView_adapter recyclerViewAdapter;
     private RecyclerView recyclerView;
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        Log.d(TAG, "onAttach: ");
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate: ok");
-    }
 
     @Nullable
     @Override
@@ -59,31 +48,31 @@ public class firstFragment extends Fragment {
         swipeRefreshLayout = view.findViewById(R.id.refresh);
         swipeRefreshLayout.setColorSchemeResources(R.color.lightGreen);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                                                    @Override
-                                                    public void onRefresh() {
-                                                        OKHttp.sendOKHttpcRequest("https://api.douban.com/v2/movie/in_theaters?city=重庆&start=0&count=20", new Callback() {
-                                                            @Override
-                                                            public void onFailure(Call call, IOException e) {
-                                                                e.printStackTrace();
-                                                            }
+            @Override
+            public void onRefresh() {
+                OKHttp.sendOKHttpcRequest("https://api.douban.com/v2/movie/in_theaters?city=重庆&start=0&count=20", new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        e.printStackTrace();
+                    }
 
-                                                            @Override
-                                                            public void onResponse(Call call, Response response) throws IOException {
-                                                                String responsText = response.body().string();
-                                                                subjectsList = handleResponse.handleSubjectsResponse(responsText);
-                                                                getActivity().runOnUiThread(new Runnable() {
-                                                                    @Override
-                                                                    public void run() {
-                                                                        recyclerViewAdapter.notifyDataSetChanged();
-                                                                        Toast.makeText(myApplication.getContext(),"刷新成功",Toast.LENGTH_SHORT).show();
-                                                                    swipeRefreshLayout.setRefreshing(false);
-                                                                    }
-                                                                });
-                                                            }
-                                                        });
-                                                    }
-                                                });
-                progressBar = view.findViewById(R.id.progress_Bar);
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String responsText = response.body().string();
+                        subjectsList = handleResponse.handleSubjectsResponse(responsText);
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                recyclerViewAdapter.notifyDataSetChanged();
+                                Toast.makeText(myApplication.getContext(), "刷新成功", Toast.LENGTH_SHORT).show();
+                                swipeRefreshLayout.setRefreshing(false);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+        progressBar = view.findViewById(R.id.progress_Bar);
         textView = view.findViewById(R.id.progress);
         progressBar.setVisibility(View.VISIBLE);
         textView.setVisibility(View.VISIBLE);
@@ -116,28 +105,26 @@ public class firstFragment extends Fragment {
                             public void onClick(int position) {
                                 Subjects subjects = subjectsList.get(position);
                                 String movieId = subjects.getId();
-                                String tiltle=subjects.getTitle();
-                                String imgUrl=subjects.getImages().getSmall();
-                               double pinfen=subjects.getRating().average;
+                                String tiltle = subjects.getTitle();
+                                String imgUrl = subjects.getImages().getSmall();
+                                double pinfen = subjects.getRating().getAverage();
                                 Intent intent = new Intent(getActivity(), detailActivity.class);
                                 intent.putExtra("movieID", movieId);
-                                intent.putExtra("tiltle",tiltle);
-                                intent.putExtra("url",imgUrl);
-                                intent.putExtra("pinFen",pinfen);
+                                intent.putExtra("tiltle", tiltle);
+                                intent.putExtra("url", imgUrl);
+                                intent.putExtra("pinFen", pinfen);
                                 startActivity(intent);
                                 Log.d(TAG, movieId);
                             }
 
                             @Override
                             public void onLongClick(int position) {
-
+Toast.makeText(myApplication.getContext(),"哈哈哈长点是一个彩蛋恭喜你找到了",Toast.LENGTH_LONG);
                             }
                         });
 
-                        //        recyclerViewAdapter.notifyDataSetChanged();
                     }
                 });
-                Log.d(TAG, String.valueOf(subjectsList.size()));
 
             }
         });
@@ -166,19 +153,4 @@ public class firstFragment extends Fragment {
         Log.d(TAG, "onResume: ");
     }
 }
-//OKHttp.sendOKHttpcRequest("https://api.douban.com/v2/movie/in_theaters?city=重庆&start=0&count=20", new Callback() {
-//    @Override
-//    public void onFailure(Call call, IOException e) {
-//        e.printStackTrace();
-//    }
-//
-//    @Override
-//    public void onResponse(Call call, Response response) throws IOException {
-//responsetext=response.body().string();
-//        subjectsList = handleResponse.handleSubjectsResponse(responsetext);
-//    }
-//});
-
-
-
 

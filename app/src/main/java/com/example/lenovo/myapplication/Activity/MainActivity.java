@@ -48,14 +48,15 @@ public class MainActivity extends AppCompatActivity
     private static final String thirdTAG = "thirdTAG";
 
     private long exitTime = 0;
-  private    Toolbar toolbar;
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-         toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("          正在火热上映");
-         setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -63,16 +64,8 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        //////////////////////////////////////////////////////////
-        Log.d("data", "onCreate:1 ");
         initView();
-
-toFirstFragment();
-        Log.d("data", "onCreate:2 ");
-        Log.d("data", "onCreate:3 ");
-        Log.d("data", "onCreate:4 ");
-
-
+        toFirstFragment();
     }
 
     public void initView() {
@@ -88,8 +81,6 @@ toFirstFragment();
         linearLayout_first.setOnClickListener(this);
         linearLayout_second.setOnClickListener(this);
         linearLayout_third.setOnClickListener(this);
-//imageView_first.setImageResource(R.drawable.shangyinselected);
-//    textView_first.setTextColor(getResources().getColor(R.color.red));//???????????
         fragmentManager = getSupportFragmentManager();
     }
 
@@ -133,7 +124,7 @@ toFirstFragment();
     private void tothirdFragment() {
         if (!currentTAG.equals(thirdTAG)) {
             setDefault();
-        toolbar.setTitle("              Top250");
+            toolbar.setTitle("              Top250");
             imageView_third.setImageResource(R.drawable.topselected);
             textView_third.setTextColor(getResources().getColor(R.color.red));
             showTabData(thirdTAG);
@@ -142,7 +133,7 @@ toFirstFragment();
 
     private void tosecondFragment() {
         if (!currentTAG.equals(secondTAG)) {
-           toolbar.setTitle("     查找您想要的电影");
+            toolbar.setTitle("     查找您想要的电影");
             setDefault();
             imageView_second.setImageResource(R.drawable.searchselected);
             textView_second.setTextColor(getResources().getColor(R.color.red));
@@ -179,106 +170,65 @@ toFirstFragment();
         }
 
 
-        //    public void ChangeFragentByTAG(String TAG) {
-//
-//         if (TAG == currentTAG) {
-//            //什么也不做
-//        } else if (TAG == firstTAG) {
-//            currentTAG=firstTAG;
-//           setDefault();
-//             imageView_first.setImageResource(R.drawable.shangyinselected);
-//             textView_first.setTextColor(getResources().getColor(R.color.red));
-//           Fragment fragment = new firstFragment();
-//             changeOrInitFragment(fragment);
-//        } else if (TAG == secondTAG) {
-//            currentTAG=secondTAG;
-//             setDefault();
-//             imageView_second.setImageResource(R.drawable.searchselected);
-//             textView_second.setTextColor(getResources().getColor(R.color.red));
-//
-//             Fragment fragment = new thirdFragment();
-//             changeOrInitFragment(fragment);
-//        } else if (TAG == thirdTAG) {
-//           currentTAG=thirdTAG;
-//             setDefault();
-//             imageView_third.setImageResource(R.drawable.topselected);
-//             textView_third.setTextColor(getResources().getColor(R.color.red));
-//
-//             Fragment fragment = new thirdFragment();
-//            changeOrInitFragment(fragment);
-//
-//         }
-//    }
-//
-//    private void changeOrInitFragment(Fragment fragment) {
-//         fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.beReplaced, fragment);
-//        fragmentTransaction.commit();
-//    }
-
-
-        //    currentTAG=firstTAG;
-//FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-//fragmentTransaction.replace(R.id.first_fragment,)
 
     }
-        @Override
-        public void onBackPressed () {
-            DrawerLayout drawer =  findViewById(R.id.drawer_layout);
-            if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START);
-            } else {
-                super.onBackPressed();
-            }
-        }
 
-        @Override
-        public boolean onCreateOptionsMenu (Menu menu){
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.main, menu);
-            return true;
-        }
-
-        @Override
-        public boolean onOptionsItemSelected (MenuItem item){
-            // Handle action bar item clicks here. The action bar will
-            // automatically handle clicks on the Home/Up button, so long
-            // as you specify a parent activity in AndroidManifest.xml.
-            int id = item.getItemId();
-
-            //noinspection SimplifiableIfStatement
-            if (id == R.id.action_settings) {
-                return true;
-            }
-
-            return super.onOptionsItemSelected(item);
-        }
-
-        @SuppressWarnings("StatementWithEmptyBody")
-        @Override
-        public boolean onNavigationItemSelected (MenuItem item){
-            // Handle navigation view item clicks here.
-            int id = item.getItemId();
-
-            if (id == R.id.nav_camera) {
-                // Handle the camera action
-            } else if (id == R.id.nav_gallery) {
-
-            } else if (id == R.id.nav_slideshow) {
-
-            } else if (id == R.id.nav_manage) {
-
-            } else if (id == R.id.nav_share) {
-
-            } else if (id == R.id.nav_send) {
-
-            }
-
-            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
             return true;
         }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -295,4 +245,4 @@ toFirstFragment();
         }
         return super.onKeyDown(keyCode, event);
     }
-    }
+}

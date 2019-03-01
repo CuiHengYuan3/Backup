@@ -9,6 +9,6 @@ public class Rating {
     return stars;
   }
 
-  public double average;
-public String    stars;
+  private double average;
+private String    stars;
 }

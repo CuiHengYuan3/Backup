@@ -1,5 +1,9 @@
 package com.example.lenovo.myapplication.util.gson2;
 
 public class Countries {
-public  String countryName;
+private   String countryName;
+
+    public String getCountryName() {
+        return countryName;
+    }
 }

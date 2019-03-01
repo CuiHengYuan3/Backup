@@ -20,7 +20,7 @@ public class gridview_adapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-   return      data.length;
+        return data.length;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class gridview_adapter extends BaseAdapter {
             convertView = LayoutInflater.from(mContext).inflate(
                     R.layout.griditem_layout, null);
             mViewHolder = new ViewHolder();
-            mViewHolder.moiveKindsText =  convertView.findViewById(R.id.tv_kind);
+            mViewHolder.moiveKindsText = convertView.findViewById(R.id.tv_kind);
             convertView.setTag(mViewHolder);
         } else {
             mViewHolder = (ViewHolder) convertView.getTag();
@@ -52,6 +52,7 @@ public class gridview_adapter extends BaseAdapter {
 
 
     }
+
     public static class ViewHolder {
         TextView moiveKindsText;
     }

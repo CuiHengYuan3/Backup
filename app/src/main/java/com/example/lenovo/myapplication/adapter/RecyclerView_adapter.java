@@ -93,17 +93,17 @@ public class RecyclerView_adapter extends RecyclerView.Adapter<RecyclerView_adap
         Subjects subjects = mSubjects.get(viewHolder.getAdapterPosition());
         Glide.with(myApplication.getContext()).load(subjects.getImages().getSmall()).into(viewHolder.moviePic);
         viewHolder.movieName.setText(subjects.getTitle());
-      String DaoYanName="";
+        String DaoYanName = "";
         for (Directors directors : subjects.getDirectors()) {
             Log.d(TAG, "onBindViewHolder: 1");
-       DaoYanName+=directors.getName() + "/";
+            DaoYanName += directors.getName() + "/";
         }
-        viewHolder.director.setText("导演："+DaoYanName);
+        viewHolder.director.setText("导演：" + DaoYanName);
         viewHolder.director.setText(viewHolder.director.getText().subSequence(0, viewHolder.director.length() - 1));
-     String yanYuanName="";
+        String yanYuanName = "";
         for (Casts casts : subjects.getCasts()) {
             Log.d(TAG, "onBindViewHolder: 2");
-         yanYuanName+=casts.getName()+"/";
+            yanYuanName += casts.getName() + "/";
         }
         viewHolder.actors.setText("演员:" + yanYuanName);
 
@@ -158,7 +158,6 @@ public class RecyclerView_adapter extends RecyclerView.Adapter<RecyclerView_adap
 
     public interface OnItemClickListener {
         void onClick(int position);
-
         void onLongClick(int position);
     }
 

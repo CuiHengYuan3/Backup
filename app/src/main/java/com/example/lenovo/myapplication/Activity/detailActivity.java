@@ -62,9 +62,9 @@ public class detailActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: ");
         Intent intent = getIntent();
         setContentView(R.layout.activity_detail2);
-      Toolbar toolbar=findViewById(R.id.toolbar_detail);
-      toolbar.setTitle("              电影详细");
-      setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_detail);
+        toolbar.setTitle("              电影详细");
+        setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,25 +143,17 @@ public class detailActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Log.d(TAG, "run: ");
-                        adapter = new actor_recyclerview_adapter(detail.casts);
+                        adapter = new actor_recyclerview_adapter(detail.getCasts());
                         juZhaoa.setAdapter(adapter);
                         Glide.with(detailActivity.this).load(imgUrl).into(iv_img);
                         DmovieName.setText(tiltle);
-                        showTime.setText(showTime.getText() + detail.year);
-//                   for (Genres genres:detail.genres){
-//kinds.setText(kinds.getText()+genres.leiXin+"/");
-//                   }
-//               kinds.setText(kinds.getText().subSequence(0,kinds.length()-1));
+                        showTime.setText(showTime.getText() + detail.getYear());
                         movielong.setText(movielong.getText() + "124分钟");
-//           for (Countries countries:detail.countries){
-//               country.setText(country.getText()+countries.countryName+"/");
-//           }
-//              country.setText(country.getText().subSequence(0,country.length()-1));
-                        kanGuo.setText(kanGuo.getText() + String.valueOf(detail.reviews_count) + "人");
-                        xiangKan.setText(xiangKan.getText() + String.valueOf(detail.wish_count) + "人");
+                        kanGuo.setText(kanGuo.getText() + String.valueOf(detail.getReviews_count()) + "人");
+                        xiangKan.setText(xiangKan.getText() + String.valueOf(detail.getWish_count()) + "人");
                         pf3.setText(pf3.getText() + String.valueOf(penFen));
-                        pfNumber.setText(String.valueOf(detail.collect_count) + "人评价");
-                        brief.setText(detail.summary);
+                        pfNumber.setText(String.valueOf(detail.getCollect_count()) + "人评价");
+                        brief.setText(detail.getSummary());
                         scrollView.setVisibility(View.VISIBLE);
                         progressBar.setVisibility(View.GONE);
                         waitText.setVisibility(View.GONE);
