@@ -61,11 +61,45 @@ public void onLongClick(int position) {
 *** 图在最后面**
 
 *** **监听短时间内返回键的次数从而发出提醒**
+
 ![两次才返回](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_173905.png) 
+
+**剩下的东西都是书上有的,比如fragment的切换，OKhttp封装请求，Gosn,Grild等等，就不拿出来了** 
+
+**截屏在下面**
  
- 
- 
- ![搜索界面](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164330.png)
+ ![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164153.png)
+***
+![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164211.png)
+***
+***
+![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164228.png)
+***
+![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164243.png)
+***
+![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164313.png)
+***
+![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164358.png)
+***
+![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164412.png)
+***
+![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164433.png)
+***
+![](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164441.png)
+***
+
+
+
+
+
+
+
+
+
+
+
+
+![搜索界面](https://raw.githubusercontent.com/cuihengyuan/DB2.0/master/超级截屏_20190301_164330.png)
  
                         
                         
